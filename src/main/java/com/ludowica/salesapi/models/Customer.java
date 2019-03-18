@@ -1,9 +1,6 @@
 package com.ludowica.salesapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Customer {
@@ -13,6 +10,14 @@ public class Customer {
     private String name;
     private String tradingName;
     private String paymentFlag;
+
+/*    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @OnDelete(action = OnDeleteAction.CASCADE)*/
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(unique = true)
+    private CustomerContact customerContact;
 
     public int getId() {
         return id;
@@ -44,5 +49,13 @@ public class Customer {
 
     public void setPaymentFlag(String paymentFlag) {
         this.paymentFlag = paymentFlag;
+    }
+
+    public CustomerContact getCustomerContact() {
+        return customerContact;
+    }
+
+    public void setCustomerContact(CustomerContact customerContact) {
+        this.customerContact = customerContact;
     }
 }

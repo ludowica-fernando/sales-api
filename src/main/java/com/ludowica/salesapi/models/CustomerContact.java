@@ -1,12 +1,9 @@
 package com.ludowica.salesapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class CustomerDetails {
+public class CustomerContact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
@@ -15,6 +12,17 @@ public class CustomerDetails {
     private String collectionLocation;
     private int telephone;
     private String email;
+
+    @OneToOne(mappedBy = "customercontact")
+    private Customer customer;
+
+    public CustomerContact(String mainLocation, String deliveryLocation, String collectionLocation, int telephone, String email) {
+        this.mainLocation = mainLocation;
+        this.deliveryLocation = deliveryLocation;
+        this.collectionLocation = collectionLocation;
+        this.telephone = telephone;
+        this.email = email;
+    }
 
     public int getCustomerId() {
         return customerId;
