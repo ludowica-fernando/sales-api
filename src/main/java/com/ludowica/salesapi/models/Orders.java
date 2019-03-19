@@ -1,23 +1,34 @@
 package com.ludowica.salesapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String orderName;
+    private String customerName;
     private double price;
     private int qty;
     private String dueDate;
     private String modeOfShipment;
-    private boolean productionStatus;
-    private boolean orderStatus;
-    private boolean warehouseStatus;
+
+    /*@OneToOne(mappedBy = "orders")*/
+    @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
+
+    private OrderStatus orderStatus;
+
+    public Orders() {
+    }
+
+    public Orders(String customerName, double price, int qty, String dueDate, String modeOfShipment, OrderStatus orderStatus) {
+        this.customerName = customerName;
+        this.price = price;
+        this.qty = qty;
+        this.dueDate = dueDate;
+        this.modeOfShipment = modeOfShipment;
+        this.orderStatus = orderStatus;
+    }
 
     public int getId() {
         return id;
@@ -27,12 +38,12 @@ public class Order {
         this.id = id;
     }
 
-    public String getOrderName() {
-        return orderName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setOrderName(String orderName) {
-        this.orderName = orderName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public double getPrice() {
@@ -67,27 +78,11 @@ public class Order {
         this.modeOfShipment = modeOfShipment;
     }
 
-    public boolean isProductionStatus() {
-        return productionStatus;
-    }
-
-    public void setProductionStatus(boolean productionStatus) {
-        this.productionStatus = productionStatus;
-    }
-
-    public boolean isOrderStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(boolean orderStatus) {
+    public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public boolean isWarehouseStatus() {
-        return warehouseStatus;
-    }
-
-    public void setWarehouseStatus(boolean warehouseStatus) {
-        this.warehouseStatus = warehouseStatus;
     }
 }

@@ -1,12 +1,9 @@
 package com.ludowica.salesapi.controllers;
 
-import com.ludowica.salesapi.models.Order;
+import com.ludowica.salesapi.models.Orders;
 import com.ludowica.salesapi.repository.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,15 +16,27 @@ public class OrderController {
     OrderRepo orderRepo;
 
     @GetMapping
-    public List<Order> getAllOrders(){
+    public List<Orders> getAllOrders(){
         return orderRepo.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Order> getOrder(@PathVariable int id){
+    public Optional<Orders> getOrder(@PathVariable int id){
         return orderRepo.findById(id);
     }
 
+    @PostMapping
+    public Orders addOrder(@RequestBody Orders orders){
+        return orderRepo.save(orders);
+    }
 
+    @PutMapping
+    public Orders updateOrder(@RequestBody Orders orders){
+        return orderRepo.save(orders);
+    }
 
+    @DeleteMapping("/{id}")
+    public void deleteOrder(@PathVariable int id){
+        orderRepo.deleteById(id);
+    }
 }

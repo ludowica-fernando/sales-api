@@ -1,5 +1,8 @@
 package com.ludowica.salesapi.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,13 +14,20 @@ public class Customer {
     private String tradingName;
     private String paymentFlag;
 
-/*    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonManagedReference
-    @OnDelete(action = OnDeleteAction.CASCADE)*/
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
     private CustomerContact customerContact;
+
+    public Customer() {
+    }
+
+    public Customer(String name, String tradingName, String paymentFlag, CustomerContact customerContact) {
+        this.name = name;
+        this.tradingName = tradingName;
+        this.paymentFlag = paymentFlag;
+        this.customerContact = customerContact;
+        this.customerContact.setCustomer(this);
+    }
 
     public int getId() {
         return id;

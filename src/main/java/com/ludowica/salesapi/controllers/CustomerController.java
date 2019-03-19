@@ -35,4 +35,9 @@ public class CustomerController {
         return customerRepo.save(customer);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteCustomer(@PathVariable int id){
+        customerRepo.deleteById(id);
+    }
+
 }

@@ -1,20 +1,29 @@
 package com.ludowica.salesapi.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
 public class CustomerContact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customerId;
+    private int id;
     private String mainLocation;
     private String deliveryLocation;
     private String collectionLocation;
     private int telephone;
     private String email;
 
-    @OneToOne(mappedBy = "customercontact")
+    @OneToOne
+    @JoinColumn
+    @MapsId
+    @JsonBackReference
     private Customer customer;
+
+    public CustomerContact() {
+    }
 
     public CustomerContact(String mainLocation, String deliveryLocation, String collectionLocation, int telephone, String email) {
         this.mainLocation = mainLocation;
@@ -24,12 +33,12 @@ public class CustomerContact {
         this.email = email;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getId() {
+        return id;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMainLocation() {
@@ -70,5 +79,13 @@ public class CustomerContact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
