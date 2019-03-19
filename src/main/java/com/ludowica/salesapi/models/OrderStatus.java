@@ -1,5 +1,7 @@
 package com.ludowica.salesapi.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,14 +12,11 @@ public class OrderStatus {
     private String productionStatus;
     private String orderStatus;
     private String warehouseStatus;
-/*
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)*/
 
     @OneToOne
     @JoinColumn
     @MapsId
-
+    @JsonBackReference
     private Orders orders;
 
     public OrderStatus() {

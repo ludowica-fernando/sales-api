@@ -1,5 +1,7 @@
 package com.ludowica.salesapi.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,9 +15,8 @@ public class Orders {
     private String dueDate;
     private String modeOfShipment;
 
-    /*@OneToOne(mappedBy = "orders")*/
     @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
-
+    @JsonManagedReference
     private OrderStatus orderStatus;
 
     public Orders() {
@@ -28,6 +29,7 @@ public class Orders {
         this.dueDate = dueDate;
         this.modeOfShipment = modeOfShipment;
         this.orderStatus = orderStatus;
+        this.orderStatus.setOrders(this);
     }
 
     public int getId() {
