@@ -9,7 +9,9 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int businessId;
     private String customerName;
+    private String item;
     private double price;
     private int qty;
     private String dueDate;
