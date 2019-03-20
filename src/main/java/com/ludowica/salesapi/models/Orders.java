@@ -24,8 +24,10 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(String customerName, double price, int qty, String dueDate, String modeOfShipment, OrderStatus orderStatus) {
+    public Orders(int businessId, String customerName, String item, double price, int qty, String dueDate, String modeOfShipment, OrderStatus orderStatus) {
+        this.businessId = businessId;
         this.customerName = customerName;
+        this.item = item;
         this.price = price;
         this.qty = qty;
         this.dueDate = dueDate;
@@ -88,5 +90,21 @@ public class Orders {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public int getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(int businessId) {
+        this.businessId = businessId;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
     }
 }
