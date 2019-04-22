@@ -15,9 +15,9 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
 
-    @GetMapping("/{userid}")
-    public Optional<User> getUser(@PathVariable int userId) {
-        return userRepo.findById(userId);
+    @GetMapping("/{id}")
+    public Optional<User> getUser(@PathVariable int id) {
+        return userRepo.findById(id);
     }
 
     @GetMapping
@@ -32,11 +32,20 @@ public class UserController {
 
     @PutMapping
     public User updateUser(@RequestBody User user) {
-        Optional<User> result = userRepo.findById(user.getUserid());
+        Optional<User> result = userRepo.findById(user.getId());
 
         if (result != null) {
             return userRepo.save(user);
         }
         return null;
     }
+
+/*    @DeleteMapping("/{id}")
+    public boolean deleteUser(@PathVariable int id){
+        if(userRepo.existsById(id)){
+            userRepo.deleteById(id);
+            return true;
+        }
+        return false;
+    }*/
 }

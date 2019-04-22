@@ -11,6 +11,7 @@ public class Orders {
     private int id;
     private int businessId;
     private String customerName;
+    private int customerId;
     private String item;
     private double price;
     private int qty;
@@ -24,9 +25,10 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(int businessId, String customerName, String item, double price, int qty, String dueDate, String modeOfShipment, OrderStatus orderStatus) {
+    public Orders(int businessId, String customerName, int customerId, String item, double price, int qty, String dueDate, String modeOfShipment, OrderStatus orderStatus) {
         this.businessId = businessId;
         this.customerName = customerName;
+        this.customerId = customerId;
         this.item = item;
         this.price = price;
         this.qty = qty;
@@ -106,5 +108,13 @@ public class Orders {
 
     public void setItem(String item) {
         this.item = item;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 }

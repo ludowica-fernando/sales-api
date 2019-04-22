@@ -7,15 +7,23 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    private int userid;
+    private int id;
     private String password;
 
-    public int getUserid() {
-        return userid;
+    public User() {
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public User(int id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPassword() {

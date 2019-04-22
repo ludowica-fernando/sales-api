@@ -13,20 +13,28 @@ public class Customer {
     private String name;
     private String tradingName;
     private String paymentFlag;
+    private String mainLocation;
+    private String deliveryLocation;
+    private String collectionLocation;
+    private int telephone;
+    private String email;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+/*    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private CustomerContact customerContact;
+    private CustomerContact customerContact;*/
 
     public Customer() {
     }
 
-    public Customer(String name, String tradingName, String paymentFlag, CustomerContact customerContact) {
+    public Customer(String name, String tradingName, String paymentFlag, String mainLocation, String deliveryLocation, String collectionLocation, int telephone, String email) {
         this.name = name;
         this.tradingName = tradingName;
         this.paymentFlag = paymentFlag;
-        this.customerContact = customerContact;
-        this.customerContact.setCustomer(this);
+        this.mainLocation = mainLocation;
+        this.deliveryLocation = deliveryLocation;
+        this.collectionLocation = collectionLocation;
+        this.telephone = telephone;
+        this.email = email;
     }
 
     public int getId() {
@@ -61,11 +69,43 @@ public class Customer {
         this.paymentFlag = paymentFlag;
     }
 
-    public CustomerContact getCustomerContact() {
-        return customerContact;
+    public String getMainLocation() {
+        return mainLocation;
     }
 
-    public void setCustomerContact(CustomerContact customerContact) {
-        this.customerContact = customerContact;
+    public void setMainLocation(String mainLocation) {
+        this.mainLocation = mainLocation;
+    }
+
+    public String getDeliveryLocation() {
+        return deliveryLocation;
+    }
+
+    public void setDeliveryLocation(String deliveryLocation) {
+        this.deliveryLocation = deliveryLocation;
+    }
+
+    public String getCollectionLocation() {
+        return collectionLocation;
+    }
+
+    public void setCollectionLocation(String collectionLocation) {
+        this.collectionLocation = collectionLocation;
+    }
+
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
