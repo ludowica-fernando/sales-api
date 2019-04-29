@@ -10,22 +10,14 @@ public class Enquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int customerId;
     private String item;
     private int qty;
     private String itemAvailability;
     private String deliveryMethod;
+    private String courierName;
+    private String courierTelephone;
     private String creditStatus;
-
-    public Enquiry() {
-    }
-
-    public Enquiry(String item, int qty, String itemAvailability, String deliveryMethod, String creditStatus) {
-        this.item = item;
-        this.qty = qty;
-        this.itemAvailability = itemAvailability;
-        this.deliveryMethod = deliveryMethod;
-        this.creditStatus = creditStatus;
-    }
 
     public int getId() {
         return id;
@@ -33,6 +25,14 @@ public class Enquiry {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getItem() {
@@ -73,5 +73,21 @@ public class Enquiry {
 
     public void setCreditStatus(String creditStatus) {
         this.creditStatus = creditStatus;
+    }
+
+    public String getCourierName() {
+        return courierName;
+    }
+
+    public void setCourierName(String courierName) {
+        this.courierName = courierName;
+    }
+
+    public String getCourierTelephone() {
+        return courierTelephone;
+    }
+
+    public void setCourierTelephone(String courierTelephone) {
+        this.courierTelephone = courierTelephone;
     }
 }
