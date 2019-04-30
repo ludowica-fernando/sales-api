@@ -23,20 +23,6 @@ public class Customer {
     @JsonManagedReference
     private CustomerContact customerContact;*/
 
-    public Customer() {
-    }
-
-    public Customer(String name, String tradingName, String paymentFlag, String mainLocation, String deliveryLocation, String collectionLocation, int telephone, String email) {
-        this.name = name;
-        this.tradingName = tradingName;
-        this.paymentFlag = paymentFlag;
-        this.mainLocation = mainLocation;
-        this.deliveryLocation = deliveryLocation;
-        this.collectionLocation = collectionLocation;
-        this.telephone = telephone;
-        this.email = email;
-    }
-
     public int getId() {
         return id;
     }

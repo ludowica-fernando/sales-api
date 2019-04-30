@@ -17,26 +17,13 @@ public class Orders {
     private int qty;
     private String dueDate;
     private String modeOfShipment;
+    private String productionStatus;
+    private String orderStatus;
+    private String warehouseStatus;
 
-    @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
+    /*@OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private OrderStatus orderStatus;
-
-    public Orders() {
-    }
-
-    public Orders(int businessId, String customerName, int customerId, String item, double price, int qty, String dueDate, String modeOfShipment, OrderStatus orderStatus) {
-        this.businessId = businessId;
-        this.customerName = customerName;
-        this.customerId = customerId;
-        this.item = item;
-        this.price = price;
-        this.qty = qty;
-        this.dueDate = dueDate;
-        this.modeOfShipment = modeOfShipment;
-        this.orderStatus = orderStatus;
-        this.orderStatus.setOrders(this);
-    }
+    private OrderStatus orderStatus;*/
 
     public int getId() {
         return id;
@@ -86,14 +73,6 @@ public class Orders {
         this.modeOfShipment = modeOfShipment;
     }
 
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
     public int getBusinessId() {
         return businessId;
     }
@@ -116,5 +95,29 @@ public class Orders {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    public String getProductionStatus() {
+        return productionStatus;
+    }
+
+    public void setProductionStatus(String productionStatus) {
+        this.productionStatus = productionStatus;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getWarehouseStatus() {
+        return warehouseStatus;
+    }
+
+    public void setWarehouseStatus(String warehouseStatus) {
+        this.warehouseStatus = warehouseStatus;
     }
 }

@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/orders")
-public class OrderController {
+@RequestMapping("/customer-orders")
+public class CustomerOrderController {
 
     @Autowired
     OrderRepo orderRepo;
