@@ -1,23 +1,28 @@
 package com.ludowica.salesapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Enquiry {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int customerId;
-    private String item;
-    private int qty;
-    private String itemAvailability;
     private String deliveryMethod;
     private String courierName;
     private String courierTelephone;
     private String creditStatus;
+
+    @OneToMany(mappedBy = "enquiry", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("enquiry")
+    private Set<EnquiryItem> enquiryItems;
+
+    @ManyToOne
+    @JoinColumn
+    private Customer customer;
 
     public int getId() {
         return id;
@@ -27,52 +32,12 @@ public class Enquiry {
         this.id = id;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getItem() {
-        return item;
-    }
-
-    public void setItem(String item) {
-        this.item = item;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
-
-    public String getItemAvailability() {
-        return itemAvailability;
-    }
-
-    public void setItemAvailability(String itemAvailability) {
-        this.itemAvailability = itemAvailability;
-    }
-
     public String getDeliveryMethod() {
         return deliveryMethod;
     }
 
     public void setDeliveryMethod(String deliveryMethod) {
         this.deliveryMethod = deliveryMethod;
-    }
-
-    public String getCreditStatus() {
-        return creditStatus;
-    }
-
-    public void setCreditStatus(String creditStatus) {
-        this.creditStatus = creditStatus;
     }
 
     public String getCourierName() {
@@ -89,5 +54,30 @@ public class Enquiry {
 
     public void setCourierTelephone(String courierTelephone) {
         this.courierTelephone = courierTelephone;
+    }
+
+    public String getCreditStatus() {
+        return creditStatus;
+    }
+
+    public void setCreditStatus(String creditStatus) {
+        this.creditStatus = creditStatus;
+    }
+
+    public Set<EnquiryItem> getEnquiryItems() {
+        return enquiryItems;
+    }
+
+    public void setEnquiryItems(Set<EnquiryItem> enquiryItems) {
+        this.enquiryItems = enquiryItems;
+        this.enquiryItems.forEach(enquiryItem -> enquiryItem.setEnquiry(this));
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
