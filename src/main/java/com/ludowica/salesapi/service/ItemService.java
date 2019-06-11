@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class ItemService {
 
-    private final String mmItemsUrl = "https://api.myjson.com/bins/v0bsm";
-    private final String itemAvailabilityUrl = "https://eirls-material.herokuapp.com/showItems";
+    //private final String mmItemsUrl = "https://api.myjson.com/bins/v0bsm";
+    private final String mmItemsUrl = "https://eirls-material.herokuapp.com/showItems";
 
     public List<Item> getAllItems() {
 
