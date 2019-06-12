@@ -99,6 +99,7 @@ public class Enquiry {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+		this.createdDate = getDate();
     }
 
     private Date getDate() {
