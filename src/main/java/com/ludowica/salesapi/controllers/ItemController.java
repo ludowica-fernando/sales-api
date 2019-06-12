@@ -16,8 +16,13 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
+    @GetMapping("/mm")
+    public List<Item> getAllItemsMM(){
+        return itemService.getAllItems();
+    }
+
     @GetMapping
-    public List<Item> getAllEnquiries(){
+    public List<Item> getAllItems(){
         return itemService.getAllItems();
     }
 
