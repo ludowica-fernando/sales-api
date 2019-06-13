@@ -34,6 +34,10 @@ public class Enquiry {
     @JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss", timezone = "Asia/Colombo")
     private Date createdDate;
 
+
+    @JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss", timezone = "Asia/Colombo")
+    private Date dueDate;
+
     public Enquiry() {
         this.createdDate = getDate();
     }
@@ -101,7 +105,15 @@ public class Enquiry {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
-		this.createdDate = getDate();
+        this.createdDate = getDate();
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
     }
 
     public String getStatus() {
