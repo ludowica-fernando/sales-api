@@ -34,7 +34,6 @@ public class Enquiry {
     @JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss", timezone = "Asia/Colombo")
     private Date createdDate;
 
-
     @JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss", timezone = "Asia/Colombo")
     private Date dueDate;
 

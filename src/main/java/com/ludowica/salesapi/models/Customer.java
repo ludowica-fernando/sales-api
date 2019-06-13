@@ -19,10 +19,6 @@ public class Customer {
     private int telephone;
     private String email;
 
-/*    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private CustomerContact customerContact;*/
-
     public int getId() {
         return id;
     }

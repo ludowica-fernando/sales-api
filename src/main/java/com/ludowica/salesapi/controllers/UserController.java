@@ -39,13 +39,4 @@ public class UserController {
         }
         return null;
     }
-
-/*    @DeleteMapping("/{id}")
-    public boolean deleteUser(@PathVariable int id){
-        if(userRepo.existsById(id)){
-            userRepo.deleteById(id);
-            return true;
-        }
-        return false;
-    }*/
 }

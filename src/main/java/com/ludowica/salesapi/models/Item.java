@@ -27,7 +27,6 @@ public class Item {
     @JsonAlias("item_price")
     private double price;
 
-
     public int getId() {
         return id;
     }
