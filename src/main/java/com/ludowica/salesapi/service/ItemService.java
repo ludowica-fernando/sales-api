@@ -11,15 +11,12 @@ import java.util.List;
 @Service
 public class ItemService {
 
-    //private final String mmItemsUrl = "https://api.myjson.com/bins/v0bsm";
     private final String mmItemsUrl = "https://eirls-material.herokuapp.com/showItems";
 
     public List<Item> getAllItems() {
 
         RestTemplate restTemplate = new RestTemplate();
-
         ResponseEntity<Item[]> mmItemsResponseEntity = restTemplate.getForEntity(mmItemsUrl, Item[].class);
-
         Item[] items = mmItemsResponseEntity.getBody();
         List<Item> itemsList = Arrays.asList(items);
 
