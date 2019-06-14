@@ -6,6 +6,7 @@ import com.ludowica.salesapi.repository.EnquiryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,4 +56,16 @@ public class EnquiryController {
     public void deleteEnquiry(@PathVariable int id) {
         enquiryRepo.deleteById(id);
     }
+
+    @PostMapping("/production")
+    public void sendToProduct(@RequestBody Enquiry enquiry) {
+
+        /*final String uri = "http://localhost:8080/production/order";
+
+        RestTemplate restTemplate = new RestTemplate();
+        Enquiry result = restTemplate.postForObject( uri, enquiry, Enquiry.class);*/
+
+        System.out.println(enquiry);
+    }
+
 }

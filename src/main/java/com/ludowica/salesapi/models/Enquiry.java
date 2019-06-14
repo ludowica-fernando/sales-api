@@ -22,6 +22,7 @@ public class Enquiry {
     private String creditStatus;
     private String status = "Pending";
     private String orderStatus = "New";
+    private String returns;
 
     @OneToMany(mappedBy = "enquiry", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("enquiry")
@@ -129,6 +130,14 @@ public class Enquiry {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getReturns() {
+        return returns;
+    }
+
+    public void setReturns(String returns) {
+        this.returns = returns;
     }
 
     private Date getDate() {
