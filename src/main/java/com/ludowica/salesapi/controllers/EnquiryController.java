@@ -1,7 +1,9 @@
 package com.ludowica.salesapi.controllers;
 
 import com.ludowica.salesapi.forms.OrderStatusForm;
+import com.ludowica.salesapi.models.DeliveryNotes;
 import com.ludowica.salesapi.models.Enquiry;
+import com.ludowica.salesapi.repository.DeliveryNoteRepo;
 import com.ludowica.salesapi.repository.EnquiryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -18,6 +20,9 @@ public class EnquiryController {
     @Autowired
     EnquiryRepo enquiryRepo;
 
+    @Autowired
+    DeliveryNoteRepo deliveryNoteRepo;
+
     @GetMapping
     public List<Enquiry> getAllEnquiries() {
         return enquiryRepo.findAll();
@@ -30,7 +35,17 @@ public class EnquiryController {
 
     @PostMapping
     public Enquiry addEnquiry(@RequestBody Enquiry enquiry) {
-        return enquiryRepo.save(enquiry);
+
+        Enquiry e =  enquiryRepo.save(enquiry);
+
+        DeliveryNotes deliveryNotes = new DeliveryNotes();
+        deliveryNotes.setOrderId(enquiry.getId());
+        deliveryNotes.setCourierName(enquiry.getCourierName());
+        deliveryNotes.setCourierTel(Integer.parseInt(enquiry.getCourierTelephone()));
+
+        deliveryNoteRepo.save(deliveryNotes);
+
+        return e;
     }
 
     @PutMapping
